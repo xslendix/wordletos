@@ -2,8 +2,14 @@
 
 param ([bool]$zeal=$false)
 
-if ($env:ZEAL -eq 'ON') {
+if ( $env:ZEAL -eq 'ON' ) {
     $zeal = $true
+}
+
+if ( $zeal ) {
+    Write-Output 'BUILDING FOR ZEALOS!'
+} else {
+    Write-Output 'BUILDING FOR TEMPLEOS!'
 }
 
 Write-Output 'INFO: Copying original source files'
@@ -15,6 +21,7 @@ Write-Output 'INFO: Generating code'
 
 Write-Output 'INFO: Patching code'
 
+Write-Output ' -> Removing formatting'
 Get-ChildItem generated -Recurse -Include *.HC | 
 Select-Object -Expand fullname |
 ForEach-Object {
@@ -22,6 +29,7 @@ ForEach-Object {
 }
 
 if ( $zeal ) {
+    Write-Output ' -> Patching for ZealOS'
     Get-ChildItem -Recurse generated/*.HC | Rename-Item -NewName { [io.path]::ChangeExtension($_.name, "ZC") }
     Move-Item generated/PaletteZeal.ZC generated/Palette.ZC -Force
 
