@@ -1,0 +1,24 @@
+U0 GrPaletteColorSet(I32 idx, CBGR24 col)
+{
+    gr_palette[idx] = col;
+}
+
+U0 WordleDark()
+{
+    GrPaletteColorSet(WHITE,  0x222222);
+    GrPaletteColorSet(BLACK,  0xffffff);
+    GrPaletteColorSet(LTGRAY, 0x3a3a3a);
+    GrPaletteColorSet(BLUE,   0x0f0f0f);
+    GrPaletteColorSet(GREEN,  0x00610a);
+    GrPaletteColorSet(YELLOW, 0x916f00);
+}
+
+U0 WordleLight()
+{
+    GrPaletteColorSet(WHITE,  0xffffff);
+    GrPaletteColorSet(BLACK,  0x222222);
+    GrPaletteColorSet(LTGRAY, 0xc0c0c0);
+    GrPaletteColorSet(BLUE,   0xe3e3e3);
+    GrPaletteColorSet(GREEN,  0x83ff7d);
+    GrPaletteColorSet(YELLOW, 0xfff27d);
+}
