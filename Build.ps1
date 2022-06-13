@@ -2,7 +2,7 @@
 
 param ([bool]$zeal=$false)
 
-if ($env:ZEAL = 'ON') {
+if ($env:ZEAL -eq 'ON') {
     $zeal = $true
 }
 
